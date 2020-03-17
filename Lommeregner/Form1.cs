@@ -30,9 +30,12 @@ namespace Lommeregner
 
         private bool CheckOperands()
         {
-            if (input[input.Length - 1] != '+' && input[input.Length - 1] != '-' && input[input.Length - 1] != '*' && input[input.Length - 1] != '/')
+            if (!String.IsNullOrEmpty(input))
             {
-                return true;
+                if (input[input.Length - 1] != '+' && input[input.Length - 1] != '-' && input[input.Length - 1] != '*' && input[input.Length - 1] != '/')
+                {
+                    return true;
+                }
             }
             return false;
         }
@@ -45,7 +48,11 @@ namespace Lommeregner
 
         private void btn_Equal_Click(object sender, EventArgs e)
         {
-            Calc(input);
+            if (CheckOperands())
+            {
+                Calc(input);
+            }
+            
         }
 
         private void btn_Plus_Click(object sender, EventArgs e)
