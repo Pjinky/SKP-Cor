@@ -19,28 +19,28 @@ namespace Lommeregner
 
         string input = string.Empty;
 
-        private void TextUpdate(string output)
+        private void TextUpdate(string output, bool clear = false)
         {
+            if (clear)
+            {
+                this.textBox1.Text = "";
+            }
             this.textBox1.Text += output;
+        }
+
+        private bool CheckOperands()
+        {
+            if (input[input.Length - 1] != '+' && input[input.Length - 1] != '-' && input[input.Length - 1] != '*' && input[input.Length - 1] != '/')
+            {
+                return true;
+            }
+            return false;
         }
 
         private void Calc(string input)
         {
-            int[] output;
-            int final = 0;
-            if (input.Contains('+'))
-            {
-                string[] vs = input.Split('+');
-                output = new int[vs.Length];
-                for (int i = 0; i < vs.Length; i++)
-                {
-                    if (int.TryParse(vs[i], out output[i]))
-                    {
-                        final += output[i];
-                    }
-                }
-            }
-            this.textBox1.Text = final + "";
+            double result = Convert.ToDouble(new DataTable().Compute(input, null));
+            TextUpdate(result + "", true);
         }
 
         private void btn_Equal_Click(object sender, EventArgs e)
@@ -50,16 +50,41 @@ namespace Lommeregner
 
         private void btn_Plus_Click(object sender, EventArgs e)
         {
-            if(input[input.Length - 1] != '+')
+            if(CheckOperands())
             {
                 TextUpdate("+");
                 input += "+";
-            }
-            else
-            {
+            }            
+        }
 
+        private void btn_Minus_Click(object sender, EventArgs e)
+        {
+
+            if (CheckOperands())
+            {
+                TextUpdate("-");
+                input += "-";
             }
-            
+        }
+
+        private void btn_Multiply_Click(object sender, EventArgs e)
+        {
+
+            if (CheckOperands())
+            {
+                TextUpdate("*");
+                input += "*";
+            }
+        }
+
+        private void btn_Divide_Click(object sender, EventArgs e)
+        {
+
+            if (CheckOperands())
+            {
+                TextUpdate("/");
+                input += "/";
+            }
         }
 
         private void btn_Zero_Click(object sender, EventArgs e)
