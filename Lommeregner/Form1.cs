@@ -32,7 +32,7 @@ namespace Lommeregner
         {
             if (!String.IsNullOrEmpty(input))
             {
-                if (input[input.Length - 1] != '+' && input[input.Length - 1] != '-' && input[input.Length - 1] != '*' && input[input.Length - 1] != '/')
+                if (input[input.Length - 1] != '+' && input[input.Length - 1] != '-' && input[input.Length - 1] != '*' && input[input.Length - 1] != '/' && input[input.Length - 1] != '.')
                 {
                     return true;
                 }
@@ -152,6 +152,15 @@ namespace Lommeregner
         {
             TextUpdate("9");
             input += "9";
+        }
+
+        private void btn_Comma_Click(object sender, EventArgs e)
+        {
+            if (CheckOperands())
+            {
+                TextUpdate(",");
+                input += ".";
+            }
         }
     }
 }

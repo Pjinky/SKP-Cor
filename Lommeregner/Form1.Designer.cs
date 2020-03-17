@@ -195,6 +195,7 @@
             this.btn_Comma.TabIndex = 14;
             this.btn_Comma.Text = ",";
             this.btn_Comma.UseVisualStyleBackColor = true;
+            this.btn_Comma.Click += new System.EventHandler(this.btn_Comma_Click);
             // 
             // btn_Divide
             // 
