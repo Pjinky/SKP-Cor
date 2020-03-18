@@ -52,7 +52,6 @@ namespace Lommeregner
             {
                 Calc(input);
             }
-            
         }
 
         private void btn_Plus_Click(object sender, EventArgs e)
@@ -66,7 +65,6 @@ namespace Lommeregner
 
         private void btn_Minus_Click(object sender, EventArgs e)
         {
-
             if (CheckOperands())
             {
                 TextUpdate("-");
@@ -76,7 +74,6 @@ namespace Lommeregner
 
         private void btn_Multiply_Click(object sender, EventArgs e)
         {
-
             if (CheckOperands())
             {
                 TextUpdate("*");
@@ -86,7 +83,6 @@ namespace Lommeregner
 
         private void btn_Divide_Click(object sender, EventArgs e)
         {
-
             if (CheckOperands())
             {
                 TextUpdate("/");
