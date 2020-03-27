@@ -21,7 +21,7 @@ namespace Spil
                 if (UIntChoice(choice) == 1)
                 {
 
-                    int points = 0;
+                    int point = 0;
                     do
                     {
                         int result = rnd.Next(min, max);
@@ -42,21 +42,21 @@ namespace Spil
                         } while (guess != result & attempts > 0);
                         if (guess == result)
                         {
-                            points++;
+                            point++;
                             Console.WriteLine("Tillykke, du gættede det rigtige tal {0}", result);
                         }
                         else
                         {
-                            if (points > highscore)
+                            if (point > highscore)
                             {
-                                highscore = points;
+                                highscore = point;
                             }
-                            points = 0;
+                            point = 0;
                             Console.WriteLine("Desværre, du har opbrugt alle dine forsøg.");
 
                         }
                         Console.WriteLine();
-                        Console.WriteLine("Du har " + points + " point og der er en highscore på " + highscore);
+                        Console.WriteLine("Du har " + point + " point og der er en highscore på " + highscore);
                         Console.Write("Tryk en vilkårlig tast for at prøve igen, tryk R for at nulstille alt eller ESC for at lukke ned");
                         ConsoleKey ipt = Console.ReadKey().Key;
                         if (ipt == ConsoleKey.Escape)
@@ -67,9 +67,9 @@ namespace Spil
                         if (ipt == ConsoleKey.R)
                         {
                             restart = true;
-                            if (points > highscore)
+                            if (point > highscore)
                             {
-                                highscore = points;
+                                highscore = point;
                             }
                         }
                     } while (!restart);
