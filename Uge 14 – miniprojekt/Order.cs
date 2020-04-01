@@ -9,15 +9,5 @@ namespace Uge_14___miniprojekt
     class Order
     {
         public List<Pizza> pizzas { get; }
-
-        public int getTotalPris()
-        {
-            int pris = 0;
-            foreach(Pizza temp in pizzas)
-            {
-                pris += temp.pris;
-            };
-            return pris;
-        }
     }
 }

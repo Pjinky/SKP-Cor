@@ -14,7 +14,7 @@ namespace Uge_14___miniprojekt
             List<Ingrediens> ingredients = new List<Ingrediens>();
             foreach(String temp in name)
             {
-                Ingrediens ingredient = new Ingrediens(temp);
+                Ingrediens ingredient = new Ingrediens(temp, 5);
                 ingredients.Add(ingredient);
             };
             return ingredients;
