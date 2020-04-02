@@ -9,5 +9,6 @@ namespace Uge_14___miniprojekt
     class Order
     {
         public List<Pizza> pizzas { get; }
+
     }
 }

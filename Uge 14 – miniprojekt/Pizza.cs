@@ -35,16 +35,4 @@ namespace Uge_14___miniprojekt
             size = paramSize;
         }
     }
-
-    public class Ingrediens
-    {
-        public String navn { get; }
-
-        public int pris { get; }
-
-        public Ingrediens(String paramName, int paramPris) {
-            navn = paramName;
-            pris = paramPris;
-        }
-    }
 }

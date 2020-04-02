@@ -69,6 +69,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Drikkevare.cs" />
+    <Compile Include="Ingrediens.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Pizza.cs" />
