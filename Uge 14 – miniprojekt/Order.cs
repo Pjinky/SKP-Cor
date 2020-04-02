@@ -9,6 +9,8 @@ namespace Uge_14___miniprojekt
     class Order
     {
         public List<Pizza> pizzas { get; }
+        public List<Drikkevare> drikkevarer { get; }
+        public String pris { get; }
 
     }
 }
