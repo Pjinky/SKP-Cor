@@ -11,6 +11,10 @@ namespace Uge_14___miniprojekt
         public List<Pizza> pizzas { get; }
         public List<Drikkevare> drikkevarer { get; }
         public String pris { get; }
-
+        public Order(List<Pizza> paramPizza, List<Drikkevare> paramDrikkevare)
+        {
+            pizzas.AddRange(paramPizza);
+            drikkevarer.AddRange(paramDrikkevare);
+        }
     }
 }

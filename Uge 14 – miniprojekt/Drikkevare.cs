@@ -17,5 +17,12 @@ namespace Uge_14___miniprojekt
             STOR
         }
         public Size size { get; }
+
+        public Drikkevare(String paramNavn, int paramPris, Size paramSize)
+        {
+            size = paramSize;
+            navn = paramNavn;
+            pris = paramPris;
+        }
     }
 }
