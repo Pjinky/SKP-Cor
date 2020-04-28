@@ -18,20 +18,28 @@ namespace Uge_14___miniprojekt
 
             listView1.Columns.Add("Navn", 100);
             listView1.Columns.Add("Ingredienser", 140);
-            listView1.Columns.Add("Pris Normal/Familie", 100);
+            listView1.Columns.Add("Pris", 100);
+
+            listView2.Columns.Add("Navn", 100);
+            listView2.Columns.Add("Pris", 140);
+            listView2.Columns.Add("Størrelse", 100);
             ImageList imgList = new ImageList();
             imgList.ImageSize = new Size(1, 40);
             listView1.SmallImageList = imgList;
+            listView2.SmallImageList = imgList;
             Helper helper = new Helper();
             List<Ingrediens> ingredients = helper.setIngredients(new string[] {"tomatsauce", "ost", "skinke", "ananas", "dressing"}, new int[] {5, 8, 5, 6, 8});
-            List<Pizza> pizzas = new List<Pizza>();
-            List<Order> orders = new List<Order>();
             List<Drikkevare> drikkevare = new List<Drikkevare>();
+            List<Pizza> pizzas = new List<Pizza>();
+            List<Ingrediens> ingredienser = new List<Ingrediens>();
+            List<Order> orders = new List<Order>();
             pizzas.Add(new Pizza("Hawaii", ingredients, Pizza.Size.FAMILIE, Pizza.Dough.Hvidt, 5));
             pizzas.Add(new Pizza("Monster", ingredients, Pizza.Size.FAMILIE, Pizza.Dough.Hvidt));
             pizzas.Add(new Pizza("Kawaii", ingredients, Pizza.Size.FAMILIE, Pizza.Dough.Hvidt));
             pizzas.Add(new Pizza("Staun", ingredients, Pizza.Size.FAMILIE, Pizza.Dough.Groft));
             drikkevare.Add(new Drikkevare("Fanta", 45, Drikkevare.Size.MELLEM));
+            drikkevare.Add(new Drikkevare("Coca Cola", 45, Drikkevare.Size.MELLEM));
+            drikkevare.Add(new Drikkevare("Faxe Kondi", 45, Drikkevare.Size.MELLEM));
             orders.Add(new Order(pizzas, drikkevare));
             ListViewItem itm;
             string[] arr;
@@ -49,9 +57,19 @@ namespace Uge_14___miniprojekt
                     itm = new ListViewItem(arr);
                     listView1.Items.Add(itm);
                 }
+                foreach(Drikkevare drik in order.drikkevarer)
+                {
+                    arr = new string[3];
+                    arr[0] = drik.navn;
+                    arr[1] = drik.pris.ToString();
+                    arr[2] = drik.size.ToString();
+                    itm = new ListViewItem(arr);
+                    listView2.Items.Add(itm);
+                }
             }
             
             listView1.View = View.Details;
+            listView2.View = View.Details;
         }
     }
 }
