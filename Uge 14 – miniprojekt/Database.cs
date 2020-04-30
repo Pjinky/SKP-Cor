@@ -18,7 +18,7 @@ namespace Uge_14___miniprojekt
         MySqlCommand cmd;
         public string dbusername = "test";
         public string dbpassword = "pass";
-        public string dbip = "136.243.20.226";
+        public string dbip = "x.x.x.x";
         public string database = "pizza";
         
         public void setup()
@@ -61,13 +61,32 @@ namespace Uge_14___miniprojekt
         public void loadAll()
         {
             //Load alt data fra database til hukommelse
+            cmd.CommandText = "SELECT * FROM ingredienser";
+            MySqlDataReader rdrIng = cmd.ExecuteReader();
+            while (rdrIng.Read())
+            {
+                ingredienser.Add(new Ingrediens(rdrIng[1].ToString(), int.Parse(rdrIng[2].ToString())));
+            }
 
-            MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = "SELECT * FROM pizzaer";
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                //pizzas.Add(new Pizza(rdr[1]));
+                string[] ingStr = rdr[2].ToString().Split(',');
+                List<Ingrediens> pizzaIngrediens = new List<Ingrediens>();
+                foreach(string tempIng in ingStr)
+                {
+                    tempIng.Replace(" ", "");
+                    foreach(Ingrediens ingrediens in ingredienser)
+                    {
+                        if(tempIng == ingrediens.navn)
+                        {
+                            pizzaIngrediens.Add(ingrediens);
+                        }
+                    }
+
+                }
+                pizzas.Add(new Pizza(rdr[1].ToString(), pizzaIngrediens, Pizza.Size.NORMAL, Pizza.Dough.Hvidt));
             }
         }
 
