@@ -61,18 +61,19 @@ namespace Uge_14___miniprojekt
         public void loadAll()
         {
             //Load alt data fra database til hukommelse
+            open();
             cmd.CommandText = "SELECT * FROM ingredienser";
             MySqlDataReader rdrIng = cmd.ExecuteReader();
             while (rdrIng.Read())
             {
-                ingredienser.Add(new Ingrediens(rdrIng[1].ToString(), int.Parse(rdrIng[2].ToString())));
+                ingredienser.Add(new Ingrediens(rdrIng[2].ToString(), int.Parse(rdrIng[3].ToString())));
             }
 
             cmd.CommandText = "SELECT * FROM pizzaer";
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                string[] ingStr = rdr[2].ToString().Split(',');
+                string[] ingStr = rdr[3].ToString().Split(',');
                 List<Ingrediens> pizzaIngrediens = new List<Ingrediens>();
                 foreach(string tempIng in ingStr)
                 {
@@ -86,13 +87,33 @@ namespace Uge_14___miniprojekt
                     }
 
                 }
-                pizzas.Add(new Pizza(rdr[1].ToString(), pizzaIngrediens, Pizza.Size.NORMAL, Pizza.Dough.Hvidt));
+                pizzas.Add(new Pizza(rdr[2].ToString(), pizzaIngrediens, Pizza.Size.NORMAL, Pizza.Dough.Hvidt));
             }
+            close();
         }
 
         public void saveAll()
         {
             //Gem alt data fra hukommelse til database
+            open();
+            cmd.CommandText = "INSERT INTO pizzaer VALUES(@ingredienser, @prisLille, @prisStor)";
+            cmd.Prepare();
+
+            foreach(Pizza pizza in pizzas)
+            {
+                cmd.Parameters["@ingredienser"].Value = String.Join(",", ingredienser);
+                cmd.Parameters["@prisLille"].Value = pizza.getTotalPris();
+                cmd.Parameters["@prisStor"].Value = pizza.getTotalPris() * 1.3;
+                cmd.ExecuteNonQuery();
+            }
+            cmd.CommandText = "INSERT INTO ingredienser VALUES(@navn, @pris)";
+            foreach(Ingrediens ingrediens in ingredienser)
+            {
+                cmd.Parameters["@navn"].Value = ingrediens.navn;
+                cmd.Parameters["@pris"].Value = ingrediens.pris;
+                cmd.ExecuteNonQuery();
+            }
+            close();
         }
     }
 }
