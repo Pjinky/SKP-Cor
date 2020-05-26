@@ -113,6 +113,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateIngredient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateIngredient.Designer.cs">
+      <DependentUpon>CreateIngredient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreatePizza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreatePizza.Designer.cs">
+      <DependentUpon>CreatePizza.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="Drikkevare.cs" />
     <Compile Include="Ingrediens.cs" />
@@ -127,6 +139,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CreateIngredient.resx">
+      <DependentUpon>CreateIngredient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreatePizza.resx">
+      <DependentUpon>CreatePizza.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
