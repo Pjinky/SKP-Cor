@@ -71,5 +71,23 @@ namespace Uge_14___miniprojekt
             listView1.View = View.Details;
             listView2.View = View.Details;
         }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            CreateOrder order = new CreateOrder();
+            order.Show();
+        }
+
+        private void btnIngredients_Click(object sender, EventArgs e)
+        {
+            CreateIngredient ingredient = new CreateIngredient();
+            ingredient.Show();
+        }
+
+        private void btnPizza_Click(object sender, EventArgs e)
+        {
+            CreatePizza pizza = new CreatePizza();
+            pizza.Show();
+        }
     }
 }

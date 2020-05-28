@@ -119,6 +119,12 @@
     <Compile Include="CreateIngredient.Designer.cs">
       <DependentUpon>CreateIngredient.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateOrder.Designer.cs">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreatePizza.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CreateIngredient.resx">
       <DependentUpon>CreateIngredient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateOrder.resx">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreatePizza.resx">
       <DependentUpon>CreatePizza.cs</DependentUpon>
